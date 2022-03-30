@@ -1,23 +1,158 @@
-# ignore everything in the root except the "wp-content" directory.
-!wp-content/
+# -----------------------------------------------------------------
+#
+# By default all files are ignored.  You'll need to whitelist
+# any mu-plugins, plugins, or themes you want to include in the repo.
+#
+# To ignore uncommitted changes in a file that is already tracked, use
+# git update-index --assume-unchanged
+#
+# To stop tracking a file that is currently tracked, use
+# git rm --cached
+#
+# -----------------------------------------------------------------
 
 # ignore everything in the "wp-content" directory, except:
-# "mu-plugins", "plugins", "themes" directory
-wp-content/*
-!wp-content/mu-plugins/
-!wp-content/plugins/
-!wp-content/themes/
+# mu-plugins, plugins, and themes directories
+/*
+!mu-plugins/
+!plugins/
+!themes/
 
-# ignore these plugins
-wp-content/plugins/hello.php
+# ignore all mu-plugins, plugins, and themes
+# unless explicitly whitelisted at the end of this file
+mu-plugins/*
+plugins/*
+themes/*
 
-# ignore specific themes
-wp-content/themes/twenty*/
-
-# ignore node dependency directories
-node_modules/
+# ignore OS generated files
+# OS generated files #
+######################
+*/.DS_Store
+.DS_Store
+.DS_Store?
+._*
+.Spotlight-V100
+.Trashes
+Icon?
+ehthumbs.db
+Thumbs.db
+*~
+.svn
+.cvs
+*.bak
+*.swp
+.sass-cache
+debug.log
+.idea
+node_modules
+.htaccess
+.env
+.env.php
 
 # ignore log files and databases
 *.log
 *.sql
 *.sqlite
+
+# ignore packaged files
+*.7z
+*.dmg
+*.gz
+*.iso
+*.jar
+*.rar
+*.swp
+*.swo
+*.tar
+*.zip
+
+# Ignore Composer Vendor files
+mu-plugins/app/vendor/*
+
+# Wordpress Specific
+uploads/
+blogs.dir/
+upgrade/*
+backup-db/*
+wp-cache-config.php
+wp-config.php
+wp-config-sample.php
+wpvividbackups/*
+cache/*
+cache/supercache/*
+cache/all/*
+uploads/backupbuddy_backups/*
+db.php
+
+# Ignore advanced-cache and object-cache for now
+advanced-cache.php
+object-cache.php
+
+# Ignore mu-plugins, themes and plugins by default
+mu-plugins/*
+themes/*
+plugins/*
+
+!mu-plugins/index.php
+# !themes/index.php
+# !plugins/index.php
+
+# ----------------------------
+# Custom Plugin / Theme Files
+# ----------------------------
+
+# WordPress SEO Ignores
+/plugins/wordpress-seo-premium/vendor/yoast/api-libs/google/cache/
+
+# Beaver Builder Ignores
+/uploads/bb-plugin/cache/
+
+# WP Rocket Ignores
+/advanced-cache.php
+
+# Autooptimize
+/cache/autoptimize/
+
+# -------------------------
+# BEGIN Whitelisted Files
+# -------------------------
+
+# track these misc files
+!/icons/
+
+# track these files, if they exist
+!/.gitignore
+!.gitignore
+!.editorconfig
+!.babelrc
+!.eslintrc
+!README.md
+!CHANGELOG.md
+!composer.json
+!composer.lock
+!/index.php
+
+# track favicon files, if they exist
+!android-chrome-*.png
+!apple-touch-icon*.png
+!browserconfig.xml
+!favicon*.png
+!favicon*.ico
+!manifest.json
+!mstile-*.png
+!safari-pinned-tab.svg
+
+# track these mu-plugins
+!mu-plugins/custom-plugin/
+!mu-plugins/custom-plugin.php
+
+# Allow mu-plugins
+!mu-plugins/bb-custom-modules/
+
+# track these plugins
+!plugins/custom-blocks/
+!plugins/custom-plugin/
+!plugins/advanced-gutenberg/
+
+# track these themes
+!themes/custom-theme/
